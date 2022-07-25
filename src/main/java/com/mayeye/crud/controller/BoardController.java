@@ -57,6 +57,10 @@ public class BoardController {
 			Model model) {
 		BoardDTO readContentDTO = boardService.getContent(board_index);
 		
+		if(readContentDTO.getBoard_subject() == null) {
+			return "error/error";
+		}
+		
 		model.addAttribute("readContentDTO", readContentDTO);
 		model.addAttribute("board_index", board_index);
 		
