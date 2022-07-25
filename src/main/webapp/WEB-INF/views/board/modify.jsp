@@ -15,7 +15,7 @@
 		<form:hidden path="board_index"/>
 			
 		<form:label path="board_date">작성날짜</form:label><br/>
-		<form:input path="board_date" readonly='true'/>
+		<form:input path="board_date" readonly='true'/><br/>
 		<br/><br/>
 		
 		<form:label path="board_subject">제목</form:label><br/>
@@ -30,7 +30,7 @@
 		
 		<label for="board_file">첨부 이미지</label><br/>
 		<c:if test="${modifyContentDTO.board_file != null }">
-			<img src="${root }resources/upload/${modifyContentDTO.board_file}" width="100%"/>	
+			<img src="${root }resources/upload/${modifyContentDTO.board_file}"/>	
 			<form:hidden path="board_file"/>
 			<br/>
 		</c:if>
@@ -38,7 +38,7 @@
 		<br/><br/>
 
 		<form:button>수정완료</form:button>
-		<a href="${root }board/read?board_index=${board_index}">취소</a>
+		<a href="${root }board/read?board_index=${modifyContentDTO.board_index}">취소</a>
 			
 	</form:form>
 </body>

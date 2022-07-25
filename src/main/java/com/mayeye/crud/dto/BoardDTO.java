@@ -1,17 +1,18 @@
 package com.mayeye.crud.dto;
 
-import org.springframework.web.multipart.MultipartFile;
 
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class BoardDTO {
 	
 	private int board_index;
 	
-	@NotNull
+	@NotBlank
 	private String board_subject;
 	
-	@NotNull
+	@NotBlank
 	private String board_content;
 	
 	private MultipartFile upload_file;

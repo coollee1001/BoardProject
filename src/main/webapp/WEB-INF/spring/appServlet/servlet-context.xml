@@ -54,7 +54,6 @@
 	<beans:bean class='org.springframework.web.multipart.support.StandardServletMultipartResolver'
 			    id='multipartResolver'/>
 	
-	
 	<!-- interceptor setting -->
 	
 	

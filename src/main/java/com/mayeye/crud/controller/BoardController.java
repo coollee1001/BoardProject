@@ -1,7 +1,6 @@
 package com.mayeye.crud.controller;
 
 import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +68,7 @@ public class BoardController {
 	public String modify(@RequestParam("board_index") int board_index,
 			@ModelAttribute("modifyContentDTO") BoardDTO modifyContentDTO,
 			Model model) {
+		
 		model.addAttribute("board_index", board_index);
 		
 		BoardDTO tempContentDTO = boardService.getContent(board_index);
@@ -84,17 +84,18 @@ public class BoardController {
 	
 	//수정 처리
 	@PostMapping("/modify_pro")
-	public String modify_pro(@Valid @ModelAttribute("writeContentDTO") BoardDTO modifyContentDTO,
+	public String modify_pro(@Valid @ModelAttribute("modifyContentDTO") BoardDTO modifyContentDTO,
 				BindingResult result,
 				Model model) {
-		
 		model.addAttribute("modifyContentDTO", modifyContentDTO);
 		
 		if(result.hasErrors()) {
+			model.addAttribute("writeContentDTO", modifyContentDTO);
 			return "board/modify";
 		}
 		
-		boardService.modifyContent(modifyContentDTO);		
+		model.addAttribute("modifyContentDTO", modifyContentDTO);
+		boardService.modifyContent(modifyContentDTO);
 		
 		return "board/modify_success";
 	}
@@ -108,6 +109,8 @@ public class BoardController {
 		model.addAttribute("board_index", board_index);
 		return "board/delete";
 	}
+	
+	
 	
 	
 }
