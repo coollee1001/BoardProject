@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.page ul {
+	list-style:none;
+	float:left;
+	display:inline;
+}
+.page ul li {
+	float:left;
+}
+.page ul li a {
+	float:left;
+	padding:4px;
+	margin-right:3px;
+	width:15px;
+	color:#000;
+	font:bold 12px tahoma;
+	border:1px solid #eee;
+	text-align:center;
+	text-decoration:none;
+}
+.page ul li a:hover, ul li a:focus {
+	color:#fff;
+	border:1px solid #f40;
+	background-color:#f40;
+}

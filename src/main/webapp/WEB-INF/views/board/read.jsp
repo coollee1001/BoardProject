@@ -11,7 +11,7 @@
 <title>게시판 등록 프로그램</title>
 </head>
 <body>
-	<div class="container">
+	<div>
 		<label for="board_date">작성날짜</label><br/>
 		<input type="text" id="board_date" name="board_date" value="${readContentDTO.board_date }" disabled="disabled"/>
 		<br/><br/>
@@ -26,10 +26,28 @@
 			<img src="${root }resources/upload/${readContentDTO.board_file}"/>
 			<br/><br/>						
 		</c:if>
+		<label for="board_file">첨부 엑셀 리스트</label><br/><a href="file/exceldownload?fileName=${readContentDTO.board_excelFile}">다운로드</a>
+			<table>
+				<tbody>
+				<tr>
+					<th>이름</th>
+					<th>전화번호</th>
+					<th>주소</th>
+				</tr>
+					<c:forEach var='obj' items="${readExcelContentDTO}">
+						<tr>
+							<td>${obj.excel_name }</td>
+							<td>${obj.excel_phone}</td>
+							<td>${obj.excel_address }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		<br/><br/>
 		<br/>
-			<a href="${root }board/list" class="btn btn-primary">목록보기</a>
-			<a href="${root }board/modify?board_index=${board_index}" class="btn btn-info">수정하기</a>
-			<a href="${root }board/delete?board_index=${board_index}" class="btn btn-danger">삭제하기</a>
+			<a href="${root }board/list?page=${page}">목록보기</a>
+			<a href="${root }board/modify?board_index=${board_index}&page=${page}">수정하기</a>
+			<a href="${root }board/delete?board_index=${board_index}&page=${page}">삭제하기</a>
 	</div>
 </body>
 </html>

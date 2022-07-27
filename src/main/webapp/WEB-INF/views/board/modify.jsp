@@ -13,7 +13,8 @@
 <body>
 	<form:form action='${root }board/modify_pro' method='post' modelAttribute="modifyContentDTO" enctype="multipart/form-data">
 		<form:hidden path="board_index"/>
-			
+		<input type="hidden" id="page" name="page" value="${page}"/>
+		
 		<form:label path="board_date">작성날짜</form:label><br/>
 		<form:input path="board_date" readonly='true'/><br/>
 		<br/><br/>
@@ -36,9 +37,19 @@
 		</c:if>
 		<form:input path="upload_file" type='file' accept="image/*"/>
 		<br/><br/>
+		
+		<form:label path="board_excelFile">엑셀 파일 첨부</form:label>&nbsp;&nbsp;&nbsp;<a href="file/filedownload">엑셀 양식 다운</a><br/>
+		<c:if test="${modifyContentDTO.board_excelFile != null}">
+			<form:label path="board_excelFile">등록된 파일 있음</form:label>
+			<form:hidden path="board_excelFile"/>
+			<br/>
+		</c:if>
+		<form:input type='file' path='upload_excelFile' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+		<form:errors path="upload_excelFile" style='color:red'/>
+		<br/><br/>
 
 		<form:button>수정완료</form:button>
-		<a href="${root }board/read?board_index=${modifyContentDTO.board_index}">취소</a>
+		<a href="${root }board/read?board_index=${modifyContentDTO.board_index}&page=${page}">취소</a>
 			
 	</form:form>
 </body>

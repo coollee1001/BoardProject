@@ -28,6 +28,11 @@
 		<form:input type='file' path='upload_file' accept="image/*"/>
 		<br/><br/>
 		
+		<form:label path="upload_excelFile">엑셀 파일 첨부</form:label>&nbsp;&nbsp;&nbsp;<a href="file/filedownload">엑셀 양식 다운</a><br/>
+		<form:input type='file' path='upload_excelFile' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+		<form:errors path="upload_excelFile" style='color:red'/>
+		<br/><br/>
+		
 		<form:button>작성하기</form:button>		
 		<a href="${root }board/list">취소</a>
 	</form:form>

@@ -4,7 +4,7 @@
 <mapper namespace="board">
 	<select id="getContentList" resultType="com.mayeye.crud.dto.BoardDTO">
 		<![CDATA[
-			select board_index, board_subject, board_content, board_file, to_char(board_date, 'YYYY-MM-DD') as board_date
+			select board_index, board_subject, board_content, board_file, to_char(board_date, 'YYYY-MM-DD') as board_date, board_excelFile
 			from board_table
 			order by board_index
 		]]>
@@ -16,14 +16,14 @@
 		</selectKey>
 	
 		<![CDATA[		
-			insert into board_table(board_index, board_subject, board_content, board_file, board_date)
-			values(#{board_index}, #{board_subject}, #{board_content}, #{board_file, jdbcType=VARCHAR}, sysdate)
+			insert into board_table(board_index, board_subject, board_content, board_file, board_date, board_excelFile)
+			values(#{board_index}, #{board_subject}, #{board_content}, #{board_file, jdbcType=VARCHAR}, sysdate, #{board_excelFile, jdbcType=VARCHAR})
 		]]>
 	</insert>
 	
 	<select id="getContent" parameterType="java.lang.Integer" resultType="com.mayeye.crud.dto.BoardDTO">
 		<![CDATA[
-			select board_subject, board_content, board_file, to_char(board_date, 'YYYY-MM-DD') as board_date
+			select board_subject, board_content, board_file, to_char(board_date, 'YYYY-MM-DD') as board_date, board_excelFile
 			from board_table
 			where board_index = #{board_index}
 		]]>
@@ -32,7 +32,7 @@
 	<update id="updateContent" parameterType="com.mayeye.crud.dto.BoardDTO">
 		<![CDATA[
 			update board_table 
-			set board_subject = #{board_subject}, board_content = #{board_content}, board_file = #{board_file}
+			set board_subject = #{board_subject}, board_content = #{board_content}, board_file = #{board_file, jdbcType=VARCHAR}, board_excelFile = #{board_excelFile, jdbcType=VARCHAR}
 			where board_index = #{board_index}
 		]]>
 	</update>
@@ -43,4 +43,10 @@
 			where board_index = #{board_index}
 		]]>
 	</delete>
+	
+	<select id="getContentCnt" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		<![CDATA[
+			select count(*) from board_table
+		]]>
+	</select>
 </mapper>

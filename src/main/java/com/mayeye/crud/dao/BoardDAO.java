@@ -2,6 +2,7 @@ package com.mayeye.crud.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,8 +19,8 @@ public class BoardDAO implements BoardDAOImpl{
 	
 	//게시판 리스트
 	@Override
-	public List<BoardDTO> board_list() {
-		return sqlSessionTemplate.selectList(NAMESPACE + "getContentList");
+	public List<BoardDTO> board_list(RowBounds rowBounds) {
+		return sqlSessionTemplate.selectList(NAMESPACE + "getContentList", null, rowBounds);
 	}
 	
 	//게시판 추가
@@ -44,5 +45,11 @@ public class BoardDAO implements BoardDAOImpl{
 	@Override
 	public int board_delete(int board_index) {
 		return sqlSessionTemplate.delete(NAMESPACE + "deleteContent", board_index);
+	}
+	
+	//게시판 페이지
+	@Override
+	public int getContentCnt() {
+		return sqlSessionTemplate.selectOne(NAMESPACE+"getContentCnt");
 	}
 }

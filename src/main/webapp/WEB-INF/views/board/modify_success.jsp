@@ -5,5 +5,5 @@
 
 <script>
 	alert('수정되었습니다')
-	location.href='${root}board/read?board_index=${modifyContentDTO.board_index}'
+	location.href='${root}board/read?board_index=${modifyContentDTO.board_index}&page=${page}'
 </script>

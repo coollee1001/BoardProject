@@ -14,12 +14,14 @@ public class BoardDTO {
 	
 	@NotBlank
 	private String board_content;
-	
+
 	private MultipartFile upload_file;
 	private String board_file;
 	
 	private String board_date;
 	
+	private MultipartFile upload_excelFile;
+	private String board_excelFile;
 	
 	
 	
@@ -63,6 +65,22 @@ public class BoardDTO {
 	public void setBoard_date(String board_date) {
 		this.board_date = board_date;
 	}
+	
+	
+	public MultipartFile getUpload_excelFile() {
+		return upload_excelFile;
+	}
+	public void setUpload_excelFile(MultipartFile upload_excelFile) {
+		this.upload_excelFile = upload_excelFile;
+	}
+	public String getBoard_excelFile() {
+		return board_excelFile;
+	}
+	public void setBoard_excelFile(String board_excelFile) {
+		this.board_excelFile = board_excelFile;
+	}
+	
+	
 	
 	
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="excel">
+	
+	<insert id="insertExcel" parameterType="com.mayeye.crud.dto.ExcelDTO">
+		insert into excel_table(excel_name, excel_address, excel_phone) values
+		(#{excel_name, jdbcType=VARCHAR}, #{excel_address, jdbcType=VARCHAR}, #{excel_phone, jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="selectAll" resultType="com.mayeye.crud.dto.ExcelDTO">
+		<![CDATA[
+			select excel_name, excel_phone, excel_address
+			from excel_table
+		]]>
+	</select>
+	
+	<delete id="delete">
+		<![CDATA[
+			delete from excel_table
+		]]>
+	</delete>
+</mapper>

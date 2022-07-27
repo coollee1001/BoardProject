@@ -5,5 +5,5 @@
 
 <script>
 	alert('작성되었습니다')
-	location.href='${root}board/read?board_index=${writeContentDTO.board_index}'
+	location.href='${root}board/read?board_index=${writeContentDTO.board_index}&page=${page}'
 </script>

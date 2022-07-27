@@ -14,9 +14,11 @@ public class ErrorController {
 		return "error/error";
 	}
 	
+	/*
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(value=HttpStatus.NOT_FOUND)
 	public String error404() {
 		return "error/error";
 	}
+	*/
 }
